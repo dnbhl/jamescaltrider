@@ -294,46 +294,148 @@
     h2 em { font-style: italic; color: var(--muted); }
 
     /* ─── ABOUT ─── */
-    .about-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 120px;
-      align-items: center;
-    }
-    .about-image {
+
+    /* Full-width video at the top */
+    .about-video-wrap {
       position: relative;
-      aspect-ratio: 3/4;
+      width: 100%;
+      aspect-ratio: 16/7;
       overflow: hidden;
+      background: #000;
     }
-    .about-image img {
+    .about-video-wrap img.video-poster {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      filter: saturate(0.85);
-      transition: transform 0.8s ease;
+      filter: saturate(0.75) brightness(0.75);
     }
-    .about-image:hover img { transform: scale(1.03); }
-
-    /* floating accent */
-    .about-image::before {
-      content: 'Drummer';
+    .about-video-wrap iframe {
       position: absolute;
-      bottom: 28px;
-      left: -1px;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      z-index: 2;
+      pointer-events: none;
+    }
+    /* cinematic gradient — heavier on bottom-left where card lives */
+    .about-video-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.3) 45%, transparent 75%),
+        linear-gradient(to right, rgba(10,10,10,0.6) 0%, transparent 50%);
       z-index: 1;
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      color: var(--warm);
-      background: var(--black);
-      padding: 8px 20px 8px 16px;
+      pointer-events: none;
     }
 
-    .about-text { }
-    .about-text h2 { margin-bottom: 48px; }
+    /* film info card — overlaid bottom-left ON the video */
+    .film-overlay-card {
+      position: absolute;
+      bottom: 44px;
+      left: 52px;
+      z-index: 3;
+      max-width: 380px;
+    }
+    .film-year {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .film-year::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--warm);
+      opacity: 0.6;
+    }
+    .film-title {
+      font-family: var(--serif);
+      font-size: clamp(22px, 2.4vw, 34px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .film-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(244,241,236,0.6);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .film-cast {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: rgba(244,241,236,0.3);
+    }
+    .film-cast strong { color: rgba(244,241,236,0.7); font-weight: 500; }
+    .film-cast-sep { opacity: 0.3; }
 
+    /* unmute pill — bottom-right of video */
+    .unmute-btn {
+      position: absolute;
+      bottom: 44px;
+      right: 52px;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      padding: 9px 16px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .unmute-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+
+    /* bio below video — single col, centered */
+    .about-body-section {
+      padding: 80px 52px 120px;
+    }
+    .about-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+    .about-photo {
+      position: relative;
+      overflow: hidden;
+    }
+    .about-photo img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: saturate(0.85);
+    }
+    .about-text h2 { margin-bottom: 40px; }
     .about-body {
       font-size: 16px;
       font-weight: 300;
@@ -345,7 +447,7 @@
     .about-stats {
       display: flex;
       gap: 0;
-      margin: 52px 0;
+      margin-bottom: 48px;
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
     }
@@ -373,17 +475,6 @@
       color: var(--faint);
       margin-top: 6px;
     }
-
-    .film-note {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.7;
-      padding: 0 0 0 18px;
-      border-left: 2px solid var(--warm);
-      margin-bottom: 36px;
-    }
-    .film-note strong { color: var(--warm); font-weight: 400; font-style: italic; font-family: var(--serif); }
 
     .text-link {
       display: inline-flex;
@@ -592,39 +683,49 @@
     /* ─── CONTACT ─── */
     .contact-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1.1fr;
       gap: 120px;
       align-items: start;
     }
-    .contact-left h2 { margin-bottom: 40px; }
+    .contact-left h2 { margin-bottom: 20px; }
     .contact-blurb {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 300;
       color: var(--muted);
-      line-height: 1.85;
-      margin-bottom: 56px;
+      line-height: 1.8;
+      margin-bottom: 0;
+      max-width: 340px;
     }
-
-    .contact-details { display: flex; flex-direction: column; gap: 0; }
-    .contact-row {
+    .contact-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--line);
+      margin: 40px 0;
+    }
+    .contact-info-list {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--line);
+      flex-direction: column;
+      gap: 0;
     }
-    .contact-row:first-child { border-top: 1px solid var(--line); }
+    .contact-info-item {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      align-items: baseline;
+      padding: 11px 0;
+    }
     .c-label {
       font-size: 10px;
       font-weight: 400;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--faint);
+      padding-top: 2px;
     }
     .c-val {
       font-size: 14px;
       font-weight: 300;
       color: var(--white);
+      line-height: 1.4;
     }
     .c-val a { color: var(--white); text-decoration: none; transition: color 0.2s; }
     .c-val a:hover { color: var(--accent); }
@@ -750,16 +851,17 @@
     .footer-credit a:hover { color: var(--muted); }
 
     /* ─── ANIMATIONS ─── */
-    .fade-up {
+    /* only hide elements once JS has confirmed observer is ready */
+    .js-ready .fade-up {
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
     }
-    .fade-up.in { opacity: 1; transform: none; }
-    .fade-up.d1 { transition-delay: 0.1s; }
-    .fade-up.d2 { transition-delay: 0.2s; }
-    .fade-up.d3 { transition-delay: 0.3s; }
-    .fade-up.d4 { transition-delay: 0.4s; }
+    .js-ready .fade-up.in { opacity: 1; transform: none; }
+    .js-ready .fade-up.d1 { transition-delay: 0.1s; }
+    .js-ready .fade-up.d2 { transition-delay: 0.2s; }
+    .js-ready .fade-up.d3 { transition-delay: 0.3s; }
+    .js-ready .fade-up.d4 { transition-delay: 0.4s; }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1024px) {
@@ -767,8 +869,13 @@
       .section { padding: 100px 28px; }
       .hero-content { padding: 0 28px 60px; }
       .scroll-hint { right: 28px; }
-      .about-layout { grid-template-columns: 1fr; gap: 60px; }
-      .about-image { aspect-ratio: 4/3; }
+      .about-video-wrap { aspect-ratio: 4/3; }
+      .film-overlay-card { left: 28px; bottom: 28px; max-width: 280px; }
+      .unmute-btn { right: 28px; bottom: 28px; }
+      .about-body-section { padding: 60px 28px 80px; }
+      .about-two-col { grid-template-columns: 1fr; gap: 48px; }
+      .about-photo { order: 2; }
+      .about-text { order: 1; }
       .lessons-header { flex-direction: column; align-items: flex-start; }
       .lesson-row { grid-template-columns: 60px 1fr; gap: 20px; }
       .lesson-location, .lesson-tag, .lesson-arrow { display: none; }
@@ -854,52 +961,75 @@
 </div>
 
 <!-- ABOUT -->
-<section id="about" class="section" aria-labelledby="about-h">
-  <div class="about-layout">
-    <div class="about-image fade-up">
-      <img
-        src="https://static.wixstatic.com/media/2352e0_bb8b6b7f689f4e67abbab7752bd36dd4~mv2.jpeg/v1/fill/w_490,h_493,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/2352e0_bb8b6b7f689f4e67abbab7752bd36dd4~mv2.jpeg"
-        alt="Jimmy Caltrider, drum teacher and professional drummer, Brooklyn NYC"
-        width="490"
-        height="493"
-        loading="lazy"
-      >
+<section id="about" aria-labelledby="about-h">
+
+  <!-- FULL-WIDTH VIDEO with film card overlaid bottom-left -->
+  <div class="about-video-wrap" id="videoWrap">
+    <img
+      class="video-poster"
+      src="https://static.wixstatic.com/media/2352e0_a6bd2d6df93e4e2e8edabf0aeda00a1ef000.jpg/v1/fill/w_951,h_535,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/2352e0_a6bd2d6df93e4e2e8edabf0aeda00a1ef000.jpg"
+      alt="Jimmy Caltrider drumming — still from A Complete Unknown (2024)"
+      loading="lazy"
+    >
+
+    <!-- film info lives right on the video -->
+    <div class="film-overlay-card">
+      <p class="film-year">2024 · Searchlight Pictures · Dir. James Mangold</p>
+      <h3 class="film-title">A Complete<br>Unknown</h3>
+      <p class="film-desc">Jimmy appears as <strong style="color:rgba(244,241,236,0.85);font-weight:400;">Bobby Gregg</strong> — the session drummer behind Dylan's most iconic recordings, including the pistol-crack snare that opens <em>Like a Rolling Stone</em>.</p>
+      <div class="film-cast">
+        <strong>Timothée Chalamet</strong>
+        <span class="film-cast-sep">·</span>
+        <span>Edward Norton</span>
+        <span class="film-cast-sep">·</span>
+        <span>Elle Fanning</span>
+        <span class="film-cast-sep">·</span>
+        <span>Boyd Holbrook</span>
+      </div>
     </div>
+  </div>
 
-    <div class="about-text">
-      <p class="eyebrow fade-up">About</p>
-      <h2 id="about-h" class="fade-up d1">
-        Musician.<br>Teacher.<br><em>Drummer.</em>
-      </h2>
+  <!-- BIO BELOW -->
+  <div class="about-body-section">
+    <div class="about-two-col">
 
-      <div class="about-stats fade-up d2">
-        <div class="stat">
-          <div class="stat-num">12<sup>+</sup></div>
-          <div class="stat-label">Years Playing</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">4</div>
-          <div class="stat-label">Years on Cruise Ships</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">NYC</div>
-          <div class="stat-label">Based Since 2021</div>
-        </div>
+      <!-- LEFT: photo -->
+      <div class="about-photo fade-up">
+        <img
+          src="https://static.wixstatic.com/media/2352e0_bb8b6b7f689f4e67abbab7752bd36dd4~mv2.jpeg/v1/fill/w_490,h_493,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/2352e0_bb8b6b7f689f4e67abbab7752bd36dd4~mv2.jpeg"
+          alt="Jimmy Caltrider, drummer and drum teacher based in Brooklyn NYC"
+          loading="lazy"
+        >
       </div>
 
-      <div class="about-body fade-up d3">
-        <p>I hold a Bachelor's degree in Percussion Performance from Keene State College, where I also picked up sticks at 12. Since then — four years drumming on cruise ships, stages across NYC including Brooklyn Bowl, Mercury Lounge, and Bowery Ballroom, and sessions with artists across every genre.</p>
-        <p>As a teacher, I combine technical depth with real performance experience. We work on what you actually want to play. I figure out your goals, your learning style, and what keeps you excited — then build from there.</p>
+      <!-- RIGHT: bio -->
+      <div class="about-text">
+        <p class="eyebrow fade-up">About</p>
+        <h2 id="about-h" class="fade-up d1">Musician.<br>Teacher.<br><em>Drummer.</em></h2>
+        <div class="about-body fade-up d2">
+          <p>I hold a Bachelor's degree in Percussion Performance from Keene State College, where I also picked up sticks at 12. Since then — four years drumming on cruise ships, stages across NYC including Brooklyn Bowl, Mercury Lounge, and Bowery Ballroom, and sessions with artists across every genre.</p>
+          <p>As a teacher, I combine technical depth with real performance experience. We work on what you actually want to play. I figure out your goals, your learning style, and what keeps you excited — then build from there.</p>
+        </div>
+        <div class="about-stats fade-up d3">
+          <div class="stat">
+            <div class="stat-num">12<sup>+</sup></div>
+            <div class="stat-label">Years Playing</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">4</div>
+            <div class="stat-label">Years on Ships</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">NYC</div>
+            <div class="stat-label">Since 2021</div>
+          </div>
+        </div>
+        <a href="https://drive.google.com/file/d/1Jx5vJI0U2oA-94FaOoI18CtTV_i2XSvY/view?usp=sharing" class="text-link fade-up d4" target="_blank" rel="noopener">
+          View Resume
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
       </div>
 
-      <div class="film-note fade-up d4">
-        Catch me playing drums in the Bob Dylan biopic <strong>A Complete Unknown</strong>, starring Timothée Chalamet.
-      </div>
-
-      <a href="https://drive.google.com/file/d/1Jx5vJI0U2oA-94FaOoI18CtTV_i2XSvY/view?usp=sharing" class="text-link fade-up d4" target="_blank" rel="noopener">
-        View Resume
-        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-      </a>
     </div>
   </div>
 </section>
@@ -1060,36 +1190,35 @@
 <!-- CONTACT -->
 <section id="contact" class="section" aria-labelledby="contact-h">
   <div class="contact-layout">
+
     <div class="contact-left">
       <p class="eyebrow fade-up">Contact</p>
       <h2 id="contact-h" class="fade-up d1">Let's<br><em>play.</em></h2>
       <p class="contact-blurb fade-up d2">Reach out directly — I respond to every message personally. First lesson is discounted for new students.</p>
 
-      <div class="contact-details fade-up d3">
-        <div class="contact-row">
-          <span class="c-label">Email</span>
-          <span class="c-val"><a href="/cdn-cgi/l/email-protection#1d777e7c71696f7479786f2b2525245d7a707c7471337e7270"><span class="__cf_email__" data-cfemail="abc1c8cac7dfd9c2cfced99d939392ebccc6cac2c785c8c4c6">[email&#160;protected]</span></a></span>
-        </div>
-        <div class="contact-row">
+      <div class="contact-divider fade-up d3"></div>
+
+      <div class="contact-info-list fade-up d3">
+        <div class="contact-info-item">
           <span class="c-label">Phone</span>
           <span class="c-val"><a href="tel:+18025796868">802-579-6868</a></span>
         </div>
-        <div class="contact-row">
+        <div class="contact-info-item">
           <span class="c-label">Studio</span>
           <span class="c-val">East Williamsburg, Brooklyn</span>
         </div>
-        <div class="contact-row">
-          <span class="c-label">In-home</span>
-          <span class="c-val">Anywhere in NYC</span>
+        <div class="contact-info-item">
+          <span class="c-label">In-home lessons</span>
+          <span class="c-val">Brooklyn & Manhattan</span>
         </div>
-        <div class="contact-row">
+        <div class="contact-info-item">
           <span class="c-label">Online</span>
           <span class="c-val">Worldwide</span>
         </div>
       </div>
     </div>
 
-    <form class="contact-form fade-up d2" name="contact" method="POST" action="mailto:jcaltrider6889@gmail.com" aria-label="Book a drum lesson">
+    <form class="contact-form fade-up d2" name="contact" method="POST" action="https://formspree.io/f/jcaltrider6889@gmail.com" aria-label="Book a drum lesson">
       <div class="form-row-2">
         <div class="form-field">
           <label for="fname">First Name</label>
@@ -1130,6 +1259,7 @@
         </button>
       </div>
     </form>
+
   </div>
 </section>
 
@@ -1144,16 +1274,50 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Intersection observer for scroll animations
-  const els = document.querySelectorAll('.fade-up');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+  // Only apply fade-up hiding once we know IntersectionObserver works
+  if ('IntersectionObserver' in window) {
+    document.body.classList.add('js-ready');
+    const els = document.querySelectorAll('.fade-up');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+    // Trigger elements already in view on load
+    els.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        el.classList.add('in');
+      } else {
+        obs.observe(el);
+      }
     });
-  }, { threshold: 0.08 });
-  els.forEach(el => obs.observe(el));
+  }
 
-  // Smooth scroll for all anchor links — offset for fixed nav
+  // Video — only activates when a real YouTube ID is provided
+  // Replace YOUTUBE_ID with the actual ID from Jimmy's YouTube link (e.g. "dQw4w9WgXcQ")
+  const YOUTUBE_ID = 'YOUTUBE_ID';
+  const videoWrap = document.getElementById('videoWrap');
+
+  if (videoWrap && YOUTUBE_ID !== 'YOUTUBE_ID') {
+    // Real ID present — inject autoplay muted iframe
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube.com/embed/${YOUTUBE_ID}?autoplay=1&mute=1&loop=1&playlist=${YOUTUBE_ID}&rel=0&modestbranding=1&controls=0&playsinline=1`;
+    iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.title = 'Jimmy Caltrider in A Complete Unknown';
+    videoWrap.appendChild(iframe);
+
+    // Unmute pill
+    const unmuteBtn = document.createElement('button');
+    unmuteBtn.className = 'unmute-btn';
+    unmuteBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>Tap for sound`;
+    videoWrap.appendChild(unmuteBtn);
+    unmuteBtn.addEventListener('click', () => {
+      iframe.src = `https://www.youtube.com/embed/${YOUTUBE_ID}?autoplay=1&mute=0&rel=0&modestbranding=1&controls=1&playsinline=1`;
+      unmuteBtn.remove();
+    });
+  }
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
       const id = link.getAttribute('href').slice(1);
