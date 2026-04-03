@@ -453,11 +453,12 @@
     }
     .stat {
       flex: 1;
-      padding: 28px 0;
+      padding: 20px 0;
       border-right: 1px solid var(--line);
     }
-    .stat:last-child { border-right: none; padding-left: 28px; }
-    .stat:first-child { padding-right: 28px; }
+    .stat:last-child { border-right: none; padding-left: 20px; }
+    .stat:first-child { padding-right: 20px; }
+    .stat:not(:first-child) { padding-left: 20px; }
     .stat-num {
       font-family: var(--serif);
       font-size: 42px;
@@ -851,11 +852,14 @@
     .footer-credit a:hover { color: var(--muted); }
 
     /* ─── ANIMATIONS ─── */
-    /* only hide elements once JS has confirmed observer is ready */
+    .fade-up {
+      opacity: 1;
+      transform: none;
+    }
     .js-ready .fade-up {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+      transform: translateY(24px);
+      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
     }
     .js-ready .fade-up.in { opacity: 1; transform: none; }
     .js-ready .fade-up.d1 { transition-delay: 0.1s; }
