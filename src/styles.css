@@ -464,9 +464,13 @@ section {
 
 .hero__copy {
   margin-top: 1.5rem;
+  font-family: var(--font-sub);
+  font-weight: 400;
   font-size: 0.9375rem;
-  line-height: 1.9;
+  line-height: 1.7;
+  color: var(--cream);
 }
+
 
 .hero__cta {
   display: flex;
