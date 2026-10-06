@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react';
 // NOTE: 'unsafe-inline' / 'unsafe-eval' in script-src are required by Vite's
 // dev HMR client only. Set a strict CSP (nonce-based) at the production host.
 export default defineConfig({
+  base: '/jamescaltrider/',
   plugins: [react()],
   server: {
     host: '127.0.0.1',
