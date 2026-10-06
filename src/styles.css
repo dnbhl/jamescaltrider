@@ -20,8 +20,8 @@
 
   --font-serif: 'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif;
   --font-sans: 'Jost', 'Futura', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
-  --font-hero: 'Anybody', var(--font-sans);
-  --font-sub: 'Tektur', var(--font-sans);
+  --font-hero: 'Helvetica Neue', var(--font-sans);
+  --font-sub: 'Helvetica Neue', var(--font-sans);
 
   --container: 1240px;
   --gutter: clamp(20px, 5vw, 72px);
@@ -416,10 +416,11 @@ section {
   background: #1a0a12;
 }
 
-.hero__media {
-  position: absolute;
-  inset: 0;
-}
+  .hero__media {
+    position: relative;
+    aspect-ratio: 1 / 1; /* Makes it square on mobile (zooms in & fills more space) */
+    /* Tip: Use 3 / 4 instead if you want it even taller (portrait) */
+  }
 
 .hero__media img {
   width: 100%;
@@ -1230,21 +1231,20 @@ section {
 
 .sheet {
   position: relative;
-  width: min(100%, 680px);
-  max-height: 88vh;
+  width: min(90%, 850px); /* Wider page proportion */
+  height: 85vh;
   overflow: auto;
-  padding: clamp(28px, 4vw, 52px);
-  background: var(--black);
-  border: 1px solid var(--line-strong);
+  padding: 0; /* Removes padding so PDF fills the sheet cleanly */
+  background: #ffffff; /* Crisp white paper background */
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.7); /* Adds depth */
   animation: rise-in 0.45s var(--ease);
 }
 
 .sheet h3 {
-  font-family: var(--font-serif);
-  font-weight: 300;
-  font-size: clamp(1.9rem, 3vw, 2.5rem);
-  line-height: 1.05;
+  display: none; /* Hides the duplicate modal title for this clean paper look */
 }
+
 
 .sheet > p {
   margin-top: 1rem;
