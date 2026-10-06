@@ -1,1177 +1,130 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drum Lessons in Brooklyn NYC | Jimmy Caltrider | Private Drum Teacher</title>
-  <meta name="description" content="Private drum lessons in Brooklyn, NYC with Jimmy Caltrider — professional drummer featured in A Complete Unknown. All ages, all levels. Studio, in-home & online.">
-  <meta name="keywords" content="drum lessons Brooklyn, drum teacher NYC, private drum lessons New York, beginner drum lessons, drum instructor Brooklyn, East Williamsburg drum studio">
-  <link rel="canonical" href="https://www.jimmycaltrider.com/">
-  <meta property="og:title" content="Drum Lessons in Brooklyn NYC | Jimmy Caltrider">
-  <meta property="og:description" content="Private drum lessons in Brooklyn, NYC. All ages, all levels. Featured in A Complete Unknown.">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Jimmy Caltrider Drum Lessons","description":"Private drum lessons in Brooklyn and NYC for all ages and skill levels.","url":"https://www.jimmycaltrider.com","telephone":"+18025796868","email":"jcaltrider6889@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Brooklyn","addressRegion":"NY","addressCountry":"US"},"areaServed":["Brooklyn","Manhattan","New York City"],"serviceType":"Drum Lessons"}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What levels do you teach?","acceptedAnswer":{"@type":"Answer","text":"All levels welcome — beginner to advanced."}},{"@type":"Question","name":"Do I need a drum set to start?","acceptedAnswer":{"@type":"Answer","text":"No. We can start with sticks and a practice pad."}},{"@type":"Question","name":"What styles do you specialize in?","acceptedAnswer":{"@type":"Answer","text":"Rock, jazz, funk, hip-hop, blues, pop, and more."}},{"@type":"Question","name":"Where are lessons held?","acceptedAnswer":{"@type":"Answer","text":"East Williamsburg studio, your home anywhere in NYC, or online."}}]}</script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Editorial+New:ital@0;1&family=Neue+Haas+Grotesk+Display+Pro:wght@400;500&display=swap" rel="stylesheet">
-  <!-- fallback stack if Editorial New isn't available -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --black: #0A0A0A;
-      --surface: #111111;
-      --surface2: #181818;
-      --line: rgba(255,255,255,0.08);
-      --white: #F4F1EC;
-      --muted: rgba(244,241,236,0.45);
-      --faint: rgba(244,241,236,0.18);
-      --accent: #FF4D1C;
-      --accent-soft: rgba(255,77,28,0.12);
-      --warm: #D4A96A;
-      --serif: 'Playfair Display', 'Georgia', serif;
-      --sans: 'DM Sans', system-ui, sans-serif;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    /* offset anchor targets so fixed nav doesn't overlap */
-    section[id], div[id] {
-      scroll-margin-top: 80px;
-    }
-
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: var(--sans);
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    /* ─── NAV ─── */
-    nav {
-      position: fixed;
-      inset: 0 0 auto 0;
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 52px;
-      height: 68px;
-      mix-blend-mode: normal;
-    }
-    nav::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0) 100%);
-      pointer-events: none;
-    }
-    .nav-logo {
-      position: relative;
-      font-family: var(--sans);
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--white);
-      text-decoration: none;
-      z-index: 1;
-    }
-    .nav-right {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      z-index: 1;
-    }
-    .nav-right a {
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.25s;
-    }
-    .nav-right a:hover { color: var(--white); }
-    .nav-book {
-      color: var(--white) !important;
-      border-bottom: 1px solid rgba(255,255,255,0.3);
-      padding-bottom: 1px;
-    }
-    .nav-book:hover { border-color: var(--white) !important; }
-
-    /* ─── HERO ─── */
-    .hero {
-      position: relative;
-      min-height: 100svh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-    .hero-bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 20%;
-      display: block;
-      filter: saturate(0.7) brightness(0.45);
-    }
-    /* dramatic gradient overlay */
-    .hero-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to top, var(--black) 0%, rgba(10,10,10,0.6) 40%, rgba(10,10,10,0.1) 100%),
-        linear-gradient(to right, rgba(10,10,10,0.5) 0%, transparent 60%);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      padding: 0 52px 72px;
-      max-width: 900px;
-    }
-    .hero-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 28px;
-    }
-    .hero-label span {
-      display: inline-block;
-      width: 28px;
-      height: 1px;
-      background: var(--accent);
-    }
-
-    h1 {
-      font-family: var(--serif);
-      font-size: clamp(56px, 8vw, 122px);
-      font-weight: 400;
-      line-height: 0.92;
-      letter-spacing: -0.02em;
-      color: var(--white);
-      margin-bottom: 36px;
-    }
-    h1 em {
-      font-style: italic;
-      color: var(--warm);
-    }
-
-    .hero-meta {
-      display: flex;
-      align-items: center;
-      gap: 48px;
-      flex-wrap: wrap;
-    }
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--white);
-      text-decoration: none;
-      background: var(--accent);
-      padding: 14px 30px;
-      border-radius: 100px;
-      transition: transform 0.25s, opacity 0.25s;
-    }
-    .hero-cta:hover { transform: translateY(-2px); opacity: 0.9; }
-    .hero-cta svg { transition: transform 0.25s; }
-    .hero-cta:hover svg { transform: translateX(3px); }
-
-    .hero-tagline {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 300px;
-    }
-
-    /* scroll hint */
-    .scroll-hint {
-      position: absolute;
-      bottom: 32px;
-      right: 52px;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--faint);
-      writing-mode: vertical-rl;
-    }
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--faint), transparent);
-      animation: scrollpulse 2s ease-in-out infinite;
-    }
-    @keyframes scrollpulse {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 1; }
-    }
-
-    /* ─── TICKER ─── */
-    .ticker-wrap {
-      overflow: hidden;
-      padding: 18px 0;
-      border-top: 1px solid var(--line);
-    }
-    .ticker { display: flex; width: max-content; animation: marquee 30s linear infinite; }
-    .ticker-item {
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--faint);
-      padding: 0 44px;
-      white-space: nowrap;
-    }
-    .ticker-item .sep { color: var(--accent); margin: 0 16px; }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* ─── SECTION BASE ─── */
-    .section {
-      padding: 140px 52px;
-    }
-    .section--alt { background: var(--surface); }
-
-    .eyebrow {
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .eyebrow::after {
-      content: '';
-      display: block;
-      height: 1px;
-      width: 32px;
-      background: var(--accent);
-      opacity: 0.5;
-    }
-
-    h2 {
-      font-family: var(--serif);
-      font-size: clamp(38px, 5vw, 72px);
-      font-weight: 400;
-      line-height: 1.0;
-      letter-spacing: -0.02em;
-      color: var(--white);
-    }
-    h2 em { font-style: italic; color: var(--muted); }
-
-    /* ─── ABOUT ─── */
-    .about-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 120px;
-      align-items: center;
-    }
-    .about-image {
-      position: relative;
-      aspect-ratio: 3/4;
-      overflow: hidden;
-    }
-    .about-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      filter: saturate(0.85);
-      transition: transform 0.8s ease;
-    }
-    .about-image:hover img { transform: scale(1.03); }
-
-    /* floating accent */
-    .about-image::before {
-      content: 'Drummer';
-      position: absolute;
-      bottom: 28px;
-      left: -1px;
-      z-index: 1;
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      color: var(--warm);
-      background: var(--black);
-      padding: 8px 20px 8px 16px;
-    }
-
-    .about-text { }
-    .about-text h2 { margin-bottom: 48px; }
-
-    .about-body {
-      font-size: 16px;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.9;
-    }
-    .about-body p + p { margin-top: 22px; }
-
-    .about-stats {
-      display: flex;
-      gap: 0;
-      margin: 52px 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-    .stat {
-      flex: 1;
-      padding: 28px 0;
-      border-right: 1px solid var(--line);
-    }
-    .stat:last-child { border-right: none; padding-left: 28px; }
-    .stat:first-child { padding-right: 28px; }
-    .stat-num {
-      font-family: var(--serif);
-      font-size: 42px;
-      font-weight: 400;
-      color: var(--white);
-      line-height: 1;
-      letter-spacing: -0.03em;
-    }
-    .stat-num sup { font-size: 20px; color: var(--accent); vertical-align: super; }
-    .stat-label {
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--faint);
-      margin-top: 6px;
-    }
-
-    .film-note {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.7;
-      padding: 0 0 0 18px;
-      border-left: 2px solid var(--warm);
-      margin-bottom: 36px;
-    }
-    .film-note strong { color: var(--warm); font-weight: 400; font-style: italic; font-family: var(--serif); }
-
-    .text-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      border-bottom: 1px solid var(--faint);
-      padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .text-link:hover { color: var(--white); border-color: var(--muted); }
-
-    /* ─── LESSONS ─── */
-    .lessons-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 80px;
-      gap: 40px;
-    }
-    .lessons-caption {
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.8;
-      max-width: 360px;
-    }
-
-    .lessons-list { display: flex; flex-direction: column; }
-    .lesson-row {
-      display: grid;
-      grid-template-columns: 80px 1fr 1fr auto;
-      align-items: center;
-      gap: 40px;
-      padding: 40px 0;
-      border-bottom: 1px solid var(--line);
-      transition: background 0.3s;
-      cursor: default;
-    }
-    .lesson-row:first-child { border-top: 1px solid var(--line); }
-    .lesson-row:hover .lesson-arrow { opacity: 1; transform: translateX(0); }
-    .lesson-row:hover .lesson-num-text { color: var(--white); }
-
-    .lesson-num-text {
-      font-family: var(--serif);
-      font-size: 13px;
-      font-style: italic;
-      color: var(--faint);
-      transition: color 0.3s;
-    }
-    .lesson-title {
-      font-family: var(--serif);
-      font-size: clamp(26px, 3vw, 40px);
-      font-weight: 400;
-      color: var(--white);
-      letter-spacing: -0.01em;
-    }
-    .lesson-location {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-    .lesson-tag {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      white-space: nowrap;
-    }
-    .lesson-arrow {
-      opacity: 0;
-      transform: translateX(-8px);
-      transition: opacity 0.3s, transform 0.3s;
-      color: var(--muted);
-    }
-
-    /* ─── STYLES ─── */
-    .styles-section {
-      padding: 80px 52px;
-      border-top: 1px solid var(--line);
-      overflow: hidden;
-    }
-    .styles-marquee-wrap { overflow: hidden; margin-top: 48px; }
-    .styles-marquee {
-      display: flex;
-      gap: 0;
-      width: max-content;
-      animation: marquee 20s linear infinite;
-    }
-    .style-item {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      padding: 0 28px;
-    }
-    .style-name {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: clamp(32px, 4vw, 56px);
-      font-weight: 400;
-      color: var(--faint);
-      white-space: nowrap;
-      transition: color 0.2s;
-    }
-    .style-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-      opacity: 0.5;
-    }
-
-    /* ─── TESTIMONIALS ─── */
-    .testimonials-intro {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 80px;
-      gap: 40px;
-    }
-    .testimonials-count {
-      font-family: var(--serif);
-      font-size: 80px;
-      font-style: italic;
-      font-weight: 400;
-      color: var(--faint);
-      line-height: 1;
-      letter-spacing: -0.04em;
-    }
-
-    .testimonials-list { display: flex; flex-direction: column; }
-    .testimonial-row {
-      display: grid;
-      grid-template-columns: 200px 1fr 160px;
-      gap: 60px;
-      align-items: start;
-      padding: 52px 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .testimonial-row:first-child { border-top: 1px solid var(--line); }
-
-    .t-meta { }
-    .t-name {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--white);
-      letter-spacing: 0.04em;
-      margin-bottom: 4px;
-    }
-    .t-location {
-      font-size: 11px;
-      font-weight: 300;
-      color: var(--faint);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-    .t-quote {
-      font-family: var(--serif);
-      font-size: clamp(16px, 1.8vw, 22px);
-      font-style: italic;
-      font-weight: 400;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-    .t-stars {
-      display: flex;
-      gap: 4px;
-      justify-content: flex-end;
-      padding-top: 4px;
-    }
-    .t-stars svg { width: 12px; height: 12px; fill: var(--accent); }
-
-    /* ─── FAQ ─── */
-    .faq-list { margin-top: 72px; }
-    .faq-item {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      padding: 40px 0;
-      border-bottom: 1px solid var(--line);
-      align-items: start;
-    }
-    .faq-item:first-child { border-top: 1px solid var(--line); }
-    .faq-q {
-      font-family: var(--serif);
-      font-size: clamp(18px, 2vw, 26px);
-      font-weight: 400;
-      color: var(--white);
-      letter-spacing: -0.01em;
-    }
-    .faq-a {
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.85;
-    }
-
-    /* ─── CONTACT ─── */
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 120px;
-      align-items: start;
-    }
-    .contact-left h2 { margin-bottom: 40px; }
-    .contact-blurb {
-      font-size: 16px;
-      font-weight: 300;
-      color: var(--muted);
-      line-height: 1.85;
-      margin-bottom: 56px;
-    }
-
-    .contact-details { display: flex; flex-direction: column; gap: 0; }
-    .contact-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .contact-row:first-child { border-top: 1px solid var(--line); }
-    .c-label {
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--faint);
-    }
-    .c-val {
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--white);
-    }
-    .c-val a { color: var(--white); text-decoration: none; transition: color 0.2s; }
-    .c-val a:hover { color: var(--accent); }
-
-    /* form */
-    .contact-form { display: flex; flex-direction: column; gap: 0; }
-    .form-field {
-      position: relative;
-      border-bottom: 1px solid var(--line);
-    }
-    .form-field:focus-within { border-color: rgba(255,255,255,0.3); }
-    .form-field label {
-      display: block;
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--faint);
-      padding: 20px 0 0;
-      transition: color 0.2s;
-    }
-    .form-field:focus-within label { color: var(--accent); }
-    .form-field input,
-    .form-field textarea,
-    .form-field select {
-      display: block;
-      width: 100%;
-      background: transparent;
-      border: none;
-      outline: none;
-      font-family: var(--sans);
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--white);
-      padding: 8px 0 18px;
-      -webkit-appearance: none;
-    }
-    .form-field input::placeholder,
-    .form-field textarea::placeholder { color: var(--faint); }
-    .form-field textarea { resize: none; min-height: 80px; }
-    .form-field select { cursor: pointer; }
-    .form-field select option { background: var(--surface2); color: var(--white); }
-
-    .form-row-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0 40px;
-    }
-    .form-row-2 .form-field:first-child { border-right: none; }
-
-    .form-submit {
-      margin-top: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .form-note {
-      font-size: 12px;
-      font-weight: 300;
-      color: var(--faint);
-    }
-    .btn-submit {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-family: var(--sans);
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--white);
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.25);
-      padding: 15px 32px;
-      border-radius: 100px;
-      cursor: pointer;
-      transition: background 0.25s, border-color 0.25s, transform 0.25s;
-    }
-    .btn-submit:hover {
-      background: var(--accent);
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-    .btn-submit svg { transition: transform 0.25s; }
-    .btn-submit:hover svg { transform: translateX(4px); }
-
-    /* ─── FOOTER ─── */
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 32px 52px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .footer-logo {
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--faint);
-    }
-    .footer-links {
-      display: flex;
-      gap: 32px;
-    }
-    .footer-links a {
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--faint);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--muted); }
-    .footer-credit {
-      font-size: 11px;
-      color: var(--faint);
-    }
-    .footer-credit a { color: var(--faint); text-decoration: none; transition: color 0.2s; }
-    .footer-credit a:hover { color: var(--muted); }
-
-    /* ─── ANIMATIONS ─── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
-    }
-    .fade-up.in { opacity: 1; transform: none; }
-    .fade-up.d1 { transition-delay: 0.1s; }
-    .fade-up.d2 { transition-delay: 0.2s; }
-    .fade-up.d3 { transition-delay: 0.3s; }
-    .fade-up.d4 { transition-delay: 0.4s; }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 1024px) {
-      nav { padding: 0 28px; }
-      .section { padding: 100px 28px; }
-      .hero-content { padding: 0 28px 60px; }
-      .scroll-hint { right: 28px; }
-      .about-layout { grid-template-columns: 1fr; gap: 60px; }
-      .about-image { aspect-ratio: 4/3; }
-      .lessons-header { flex-direction: column; align-items: flex-start; }
-      .lesson-row { grid-template-columns: 60px 1fr; gap: 20px; }
-      .lesson-location, .lesson-tag, .lesson-arrow { display: none; }
-      .lesson-location { display: block; grid-column: 2; font-size: 13px; }
-      .testimonial-row { grid-template-columns: 1fr; gap: 20px; }
-      .t-stars { justify-content: flex-start; }
-      .faq-item { grid-template-columns: 1fr; gap: 16px; }
-      .contact-layout { grid-template-columns: 1fr; gap: 72px; }
-      .styles-section { padding: 60px 28px; }
-      footer { padding: 28px; flex-direction: column; align-items: flex-start; gap: 16px; }
-    }
-    @media (max-width: 640px) {
-      .nav-right a:not(.nav-book) { display: none; }
-      h1 { font-size: 52px; }
-      .testimonials-count { font-size: 56px; }
-      .form-row-2 { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-<body>
-
-<!-- NAV -->
-<nav aria-label="Main navigation">
-  <a href="#" class="nav-logo">Jimmy Caltrider</a>
-  <div class="nav-right">
-    <a href="#about">About</a>
-    <a href="#lessons">Lessons</a>
-    <a href="#faqs">FAQs</a>
-    <a href="#contact" class="nav-book">Book a Lesson</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<header class="hero">
-  <div class="hero-bg">
-    <img
-      src="https://static.wixstatic.com/media/2352e0_c5291ed64704430983e61ae56b4d2192~mv2.png/v1/fill/w_980,h_619,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/2352e0_c5291ed64704430983e61ae56b4d2192~mv2.png"
-      alt=""
-      role="presentation"
-      loading="eager"
-    >
-  </div>
-
-  <div class="hero-content">
-    <p class="hero-label">
-      <span></span>
-      Brooklyn, New York
-    </p>
-    <h1>
-      Private<br>
-      <em>drum</em><br>
-      lessons.
-    </h1>
-    <div class="hero-meta">
-      <a href="#contact" class="hero-cta">
-        Book a Lesson
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-      </a>
-      <p class="hero-tagline">All ages. All levels. Studio, in-home, or online.</p>
-    </div>
-  </div>
-
-  <div class="scroll-hint" aria-hidden="true">
-    <div class="scroll-line"></div>
-    Scroll
-  </div>
-</header>
-
-<!-- TICKER -->
-<div class="ticker-wrap" aria-hidden="true">
-  <div class="ticker">
-    <span class="ticker-item">Rock<span class="sep">·</span>Jazz<span class="sep">·</span>Funk<span class="sep">·</span>Hip-Hop<span class="sep">·</span>Blues<span class="sep">·</span>Pop</span>
-    <span class="ticker-item"><span class="sep">✦</span>East Williamsburg Studio</span>
-    <span class="ticker-item"><span class="sep">✦</span>All Ages &amp; Levels</span>
-    <span class="ticker-item"><span class="sep">✦</span>Brooklyn Bowl · Mercury Lounge · Bowery Ballroom</span>
-    <span class="ticker-item"><span class="sep">✦</span>A Complete Unknown</span>
-    <span class="ticker-item">Rock<span class="sep">·</span>Jazz<span class="sep">·</span>Funk<span class="sep">·</span>Hip-Hop<span class="sep">·</span>Blues<span class="sep">·</span>Pop</span>
-    <span class="ticker-item"><span class="sep">✦</span>East Williamsburg Studio</span>
-    <span class="ticker-item"><span class="sep">✦</span>All Ages &amp; Levels</span>
-    <span class="ticker-item"><span class="sep">✦</span>Brooklyn Bowl · Mercury Lounge · Bowery Ballroom</span>
-    <span class="ticker-item"><span class="sep">✦</span>A Complete Unknown</span>
-  </div>
-</div>
-
-<!-- ABOUT -->
-<section id="about" class="section" aria-labelledby="about-h">
-  <div class="about-layout">
-    <div class="about-image fade-up">
-      <img
-        src="https://static.wixstatic.com/media/2352e0_bb8b6b7f689f4e67abbab7752bd36dd4~mv2.jpeg/v1/fill/w_490,h_493,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/2352e0_bb8b6b7f689f4e67abbab7752bd36dd4~mv2.jpeg"
-        alt="Jimmy Caltrider, drum teacher and professional drummer, Brooklyn NYC"
-        width="490"
-        height="493"
-        loading="lazy"
-      >
-    </div>
-
-    <div class="about-text">
-      <p class="eyebrow fade-up">About</p>
-      <h2 id="about-h" class="fade-up d1">
-        Musician.<br>Teacher.<br><em>Drummer.</em>
-      </h2>
-
-      <div class="about-stats fade-up d2">
-        <div class="stat">
-          <div class="stat-num">12<sup>+</sup></div>
-          <div class="stat-label">Years Playing</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">4</div>
-          <div class="stat-label">Years on Cruise Ships</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">NYC</div>
-          <div class="stat-label">Based Since 2021</div>
-        </div>
-      </div>
-
-      <div class="about-body fade-up d3">
-        <p>I hold a Bachelor's degree in Percussion Performance from Keene State College, where I also picked up sticks at 12. Since then — four years drumming on cruise ships, stages across NYC including Brooklyn Bowl, Mercury Lounge, and Bowery Ballroom, and sessions with artists across every genre.</p>
-        <p>As a teacher, I combine technical depth with real performance experience. We work on what you actually want to play. I figure out your goals, your learning style, and what keeps you excited — then build from there.</p>
-      </div>
-
-      <div class="film-note fade-up d4">
-        Catch me playing drums in the Bob Dylan biopic <strong>A Complete Unknown</strong>, starring Timothée Chalamet.
-      </div>
-
-      <a href="https://drive.google.com/file/d/1Jx5vJI0U2oA-94FaOoI18CtTV_i2XSvY/view?usp=sharing" class="text-link fade-up d4" target="_blank" rel="noopener">
-        View Resume
-        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- LESSONS -->
-<section id="lessons" class="section section--alt" aria-labelledby="lessons-h">
-  <div class="lessons-header">
-    <div>
-      <p class="eyebrow fade-up">Lessons</p>
-      <h2 id="lessons-h" class="fade-up d1">Three ways to<br>work <em>together.</em></h2>
-    </div>
-    <p class="lessons-caption fade-up d2">First lesson discounted for all new students. No commitment, no pressure — just drumming.</p>
-  </div>
-
-  <div class="lessons-list" role="list">
-    <article class="lesson-row fade-up" role="listitem">
-      <span class="lesson-num-text">01</span>
-      <h3 class="lesson-title">Studio</h3>
-      <p class="lesson-location">East Williamsburg, Brooklyn — two full acoustic kits, real-time demonstration. Recording packages available.</p>
-      <span class="lesson-tag">In-person</span>
-      <span class="lesson-arrow" aria-hidden="true">→</span>
-    </article>
-    <article class="lesson-row fade-up d1" role="listitem">
-      <span class="lesson-num-text">02</span>
-      <h3 class="lesson-title">In-Home</h3>
-      <p class="lesson-location">Anywhere in NYC — I come to you. Electric kits are city-friendly. Happy to recommend a starter kit.</p>
-      <span class="lesson-tag">In-person</span>
-      <span class="lesson-arrow" aria-hidden="true">→</span>
-    </article>
-    <article class="lesson-row fade-up d2" role="listitem">
-      <span class="lesson-num-text">03</span>
-      <h3 class="lesson-title">Online</h3>
-      <p class="lesson-location">Anywhere in the world — full kit or just sticks and a pad. Real technique, real results, no commute.</p>
-      <span class="lesson-tag">Virtual</span>
-      <span class="lesson-arrow" aria-hidden="true">→</span>
-    </article>
-  </div>
-</section>
-
-<!-- STYLES -->
-<div class="styles-section" aria-label="Musical styles taught">
-  <p class="eyebrow">Styles</p>
-  <div class="styles-marquee-wrap" aria-hidden="true">
-    <div class="styles-marquee">
-      <div class="style-item"><span class="style-name">Rock</span><span class="style-dot"></span></div>
-      <div class="style-item"><span class="style-name">Jazz</span><span class="style-dot"></span></div>
-      <div class="style-item"><span class="style-name">Funk</span><span class="style-dot"></span></div>
-      <div class="style-item"><span class="style-name">Hip-Hop</span><span class="style-dot"></span></div>
-      <div class="style-item"><span class="style-name">Blues</span><span class="style-dot"></span></div>
-      <div class="style-item"><span class="style-name">Pop</span><span class="style-dot"></span></div>
-      <div class="style-item"><span class="style-name">R&amp;B</span><span class="style-dot"></span></div>
-      <div class="style-item"><span class="style-name">Fusion</span><span class="style-dot"></span></div>
-      <div class="style-item"><span class="style-name">Latin</span><span class="style-dot"></span></div>
-      <div class="style-item"><span class="style-name">Rock</span><span class="style-dot"></span></div>
-      <div class="style-item"><span class="style-name">Jazz</span><span class="style-dot"></span></div>
-      <div class="style-item"><span class="style-name">Funk</span><span class="style-dot"></span></div>
-      <div class="style-item"><span class="style-name">Hip-Hop</span><span class="style-dot"></span></div>
-      <div class="style-item"><span class="style-name">Blues</span><span class="style-dot"></span></div>
-      <div class="style-item"><span class="style-name">Pop</span><span class="style-dot"></span></div>
-      <div class="style-item"><span class="style-name">R&amp;B</span><span class="style-dot"></span></div>
-      <div class="style-item"><span class="style-name">Fusion</span><span class="style-dot"></span></div>
-      <div class="style-item"><span class="style-name">Latin</span><span class="style-dot"></span></div>
-    </div>
-  </div>
-</div>
-
-<!-- TESTIMONIALS -->
-<section class="section" aria-labelledby="testimonials-h">
-  <div class="testimonials-intro">
-    <div>
-      <p class="eyebrow fade-up">Reviews</p>
-      <h2 id="testimonials-h" class="fade-up d1">What students<br>are <em>saying.</em></h2>
-    </div>
-    <div class="testimonials-count fade-up d2" aria-hidden="true">5★</div>
-  </div>
-
-  <div class="testimonials-list">
-    <div class="testimonial-row fade-up">
-      <div class="t-meta">
-        <p class="t-name">Elaine S.</p>
-        <p class="t-location">Carroll Gardens</p>
-      </div>
-      <blockquote class="t-quote">"Jimmy is a fantastic drum teacher. He has an amazing way of connecting with kids to make music lessons fun while still challenging. My son has been taking lessons for 2 years and has not only shown tremendous growth but truly loves their weekly time together."</blockquote>
-      <div class="t-stars" aria-label="5 stars">
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      </div>
-    </div>
-
-    <div class="testimonial-row fade-up d1">
-      <div class="t-meta">
-        <p class="t-name">Cindy C.</p>
-        <p class="t-location">Brooklyn Heights</p>
-      </div>
-      <blockquote class="t-quote">"Jimmy has been wonderful with my 12-year-old for the past 8 months. My son's interest in rhythm is somewhat untraditional, and Jimmy met him exactly where he was — structuring lessons in a way that keeps him motivated every single week."</blockquote>
-      <div class="t-stars" aria-label="5 stars">
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      </div>
-    </div>
-
-    <div class="testimonial-row fade-up d2">
-      <div class="t-meta">
-        <p class="t-name">Narelle B.</p>
-        <p class="t-location">Cobble Hill</p>
-      </div>
-      <blockquote class="t-quote">"Jimmy is an amazing teacher. My daughter loves every lesson with him. His patience, musicality, and enthusiasm are unmatched. I'd highly recommend him to anyone in Brooklyn looking for a drum teacher who genuinely cares."</blockquote>
-      <div class="t-stars" aria-label="5 stars">
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faqs" class="section section--alt" aria-labelledby="faq-h">
-  <p class="eyebrow fade-up">FAQs</p>
-  <h2 id="faq-h" class="fade-up d1">Common<br><em>questions.</em></h2>
-
-  <div class="faq-list">
-    <div class="faq-item fade-up">
-      <p class="faq-q">What skill levels do you teach?</p>
-      <p class="faq-a">All levels welcome — complete beginners through advanced drummers looking to sharpen technique, expand musicality, or take on new styles.</p>
-    </div>
-    <div class="faq-item fade-up d1">
-      <p class="faq-q">Do I need a drum set to start?</p>
-      <p class="faq-a">No. Beginners can start with sticks and a practice pad. Electric kits are great for NYC apartments — quiet, compact, and versatile. I'm happy to recommend one.</p>
-    </div>
-    <div class="faq-item fade-up">
-      <p class="faq-q">What styles do you specialize in?</p>
-      <p class="faq-a">Rock, jazz, funk, hip-hop, blues, pop, and more. Every lesson is shaped around your taste — we work on what excites you.</p>
-    </div>
-    <div class="faq-item fade-up d1">
-      <p class="faq-q">How does a typical lesson work?</p>
-      <p class="faq-a">We warm up together, then work on patterns, grooves, fills, or full songs. I use an iPad for visual references to help ideas land faster.</p>
-    </div>
-    <div class="faq-item fade-up">
-      <p class="faq-q">What do you charge?</p>
-      <p class="faq-a">Reach out for current rates. First trial lesson is discounted for new students — no commitment required.</p>
-    </div>
-    <div class="faq-item fade-up d1">
-      <p class="faq-q">What's your teaching style?</p>
-      <p class="faq-a">Musical, tailored, and actually fun. Whether we're jamming to songs you love or breaking down complex grooves step by step — it should feel worth your time.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section" aria-labelledby="contact-h">
-  <div class="contact-layout">
-    <div class="contact-left">
-      <p class="eyebrow fade-up">Contact</p>
-      <h2 id="contact-h" class="fade-up d1">Let's<br><em>play.</em></h2>
-      <p class="contact-blurb fade-up d2">Reach out directly — I respond to every message personally. First lesson is discounted for new students.</p>
-
-      <div class="contact-details fade-up d3">
-        <div class="contact-row">
-          <span class="c-label">Email</span>
-          <span class="c-val"><a href="/cdn-cgi/l/email-protection#1d777e7c71696f7479786f2b2525245d7a707c7471337e7270"><span class="__cf_email__" data-cfemail="abc1c8cac7dfd9c2cfced99d939392ebccc6cac2c785c8c4c6">[email&#160;protected]</span></a></span>
-        </div>
-        <div class="contact-row">
-          <span class="c-label">Phone</span>
-          <span class="c-val"><a href="tel:+18025796868">802-579-6868</a></span>
-        </div>
-        <div class="contact-row">
-          <span class="c-label">Studio</span>
-          <span class="c-val">East Williamsburg, Brooklyn</span>
-        </div>
-        <div class="contact-row">
-          <span class="c-label">In-home</span>
-          <span class="c-val">Anywhere in NYC</span>
-        </div>
-        <div class="contact-row">
-          <span class="c-label">Online</span>
-          <span class="c-val">Worldwide</span>
-        </div>
-      </div>
-    </div>
-
-    <form class="contact-form fade-up d2" name="contact" method="POST" action="mailto:jcaltrider6889@gmail.com" aria-label="Book a drum lesson">
-      <div class="form-row-2">
-        <div class="form-field">
-          <label for="fname">First Name</label>
-          <input id="fname" type="text" name="first-name" placeholder="Jane" required autocomplete="given-name">
-        </div>
-        <div class="form-field">
-          <label for="lname">Last Name</label>
-          <input id="lname" type="text" name="last-name" placeholder="Smith" required autocomplete="family-name">
-        </div>
-      </div>
-      <div class="form-field">
-        <label for="email">Email</label>
-        <input id="email" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
-      </div>
-      <div class="form-field">
-        <label for="phone">Phone (optional)</label>
-        <input id="phone" type="tel" name="phone" placeholder="(212) 000-0000" autocomplete="tel">
-      </div>
-      <div class="form-field">
-        <label for="type">Lesson Format</label>
-        <select id="type" name="lesson-type">
-          <option value="" disabled selected>Select...</option>
-          <option value="studio">Studio — East Williamsburg</option>
-          <option value="in-home">In-home — NYC</option>
-          <option value="online">Online</option>
-          <option value="unsure">Not sure yet</option>
-        </select>
-      </div>
-      <div class="form-field">
-        <label for="msg">Message</label>
-        <textarea id="msg" name="message" placeholder="Your experience level, what you want to learn, any questions..."></textarea>
-      </div>
-      <div class="form-submit">
-        <span class="form-note">I'll reply within 24 hours.</span>
-        <button type="submit" class="btn-submit">
-          Send
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-        </button>
-      </div>
-    </form>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <span class="footer-logo">Jimmy Caltrider</span>
-  <div class="footer-links">
-    <a href="#">Privacy</a>
-    <a href="#">Accessibility</a>
-  </div>
-  <p class="footer-credit">© 2025 J. Caltrider · Designed by <a href="https://ranaabdalla.com/" target="_blank" rel="noopener">Rana Abdalla</a></p>
-</footer>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Intersection observer for scroll animations
-  const els = document.querySelectorAll('.fade-up');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
-    });
-  }, { threshold: 0.08 });
-  els.forEach(el => obs.observe(el));
-
-  // Smooth scroll for all anchor links — offset for fixed nav
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', e => {
-      const id = link.getAttribute('href').slice(1);
-      if (!id) return;
-      const target = document.getElementById(id);
-      if (!target) return;
-      e.preventDefault();
-      const navH = document.querySelector('nav').offsetHeight;
-      const top = target.getBoundingClientRect().top + window.scrollY - navH - 12;
-      window.scrollTo({ top, behavior: 'smooth' });
-    });
-  });
-
-  // Nav transparency
-  const nav = document.querySelector('nav');
-  window.addEventListener('scroll', () => {
-    nav.style.setProperty('--nav-alpha', Math.min(window.scrollY / 80, 1));
-  }, { passive: true });
-
-  // Pause marquees on hover
-  document.querySelecto
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+
+    <title>Private Drum Lessons for Kids & Adults in Brooklyn & Manhattan | Jimmy Caltrider</title>
+    <meta name="description" content="Private drum lessons for kids and adults in Brooklyn & Manhattan. In-home, at Jimmy's Brooklyn studio, or online. Taught by a professional NYC drummer. Discounted first trial lesson for new students." />
+    <meta name="author" content="Jimmy Caltrider" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://www.jimmycaltrider.com/" />
+
+    <!-- Local SEO -->
+    <meta name="geo.region" content="US-NY" />
+    <meta name="geo.placename" content="Brooklyn, New York" />
+    <meta name="geo.position" content="40.7003;-73.9485" />
+    <meta name="ICBM" content="40.7003, -73.9485" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.jimmycaltrider.com/" />
+    <meta property="og:site_name" content="Jimmy Caltrider" />
+    <meta property="og:title" content="Private Drum Lessons for Kids & Adults in Brooklyn & Manhattan | Jimmy Caltrider" />
+    <meta property="og:description" content="Private drum lessons for kids and adults in Brooklyn & Manhattan. In-home, studio, or online. Taught by a professional NYC drummer. Book a trial lesson today!" />
+    <meta property="og:image" content="https://www.jimmycaltrider.com/images/og-share.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="1200" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Private Drum Lessons for Kids & Adults in Brooklyn & Manhattan | Jimmy Caltrider" />
+    <meta name="twitter:description" content="Private drum lessons for kids and adults in Brooklyn & Manhattan. In-home, studio, or online. Taught by a professional NYC drummer." />
+    <meta name="twitter:image" content="https://www.jimmycaltrider.com/images/og-share.jpg" />
+
+    <!-- Performance: preload the hero image (largest contentful paint) -->
+    <link rel="preload" as="image" href="/images/hero-jimmy-lights.jpg" media="(min-width: 861px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/images/hero-jimmy-lights-mobile.jpg" media="(max-width: 860px)" fetchpriority="high" />
+
+    <!-- Typography: Anybody + Tektur (hero), Cormorant Garamond (editorial), Jost (Futura-style body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@100..125,500..700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&family=Tektur:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Structured data: local music teacher + FAQ rich results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": ["LocalBusiness", "MusicSchool"],
+          "@id": "https://www.jimmycaltrider.com/#business",
+          "name": "Jimmy Caltrider — Private Drum Lessons",
+          "url": "https://www.jimmycaltrider.com/",
+          "image": "https://www.jimmycaltrider.com/images/og-share.jpg",
+          "description": "Private drum lessons for kids and adults in Brooklyn & Manhattan. In-home, studio, or online. Taught by a professional NYC drummer.",
+          "telephone": "+1-802-579-6868",
+          "email": "jcaltrider6889@gmail.com",
+          "priceRange": "$$",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "630 Flushing Ave",
+            "addressLocality": "Brooklyn",
+            "addressRegion": "NY",
+            "postalCode": "11206",
+            "addressCountry": "US"
+          },
+          "geo": { "@type": "GeoCoordinates", "latitude": 40.7003, "longitude": -73.9485 },
+          "areaServed": [
+            { "@type": "Place", "name": "Brooklyn, NY" },
+            { "@type": "Place", "name": "Manhattan, NY" },
+            { "@type": "Place", "name": "Park Slope" },
+            { "@type": "Place", "name": "Cobble Hill" },
+            { "@type": "Place", "name": "Brooklyn Heights" },
+            { "@type": "Place", "name": "Carroll Gardens" },
+            { "@type": "Place", "name": "DUMBO" },
+            { "@type": "Place", "name": "Williamsburg" },
+            { "@type": "Place", "name": "Bed-Stuy" },
+            { "@type": "Place", "name": "Fort Greene" },
+            { "@type": "Place", "name": "Upper West Side" },
+            { "@type": "Place", "name": "Upper East Side" },
+            { "@type": "Place", "name": "Tribeca" },
+            { "@type": "Place", "name": "West Village" },
+            { "@type": "Place", "name": "East Village" },
+            { "@type": "Place", "name": "Chelsea" },
+            { "@type": "Place", "name": "Financial District" },
+            { "@type": "Place", "name": "Gramercy" }
+          ],
+          "founder": { "@id": "https://www.jimmycaltrider.com/#jimmy" },
+          "makesOffer": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "In-home drum lessons", "areaServed": "Brooklyn & Manhattan" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Studio drum lessons", "areaServed": "Brooklyn" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Online drum lessons" } }
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://www.jimmycaltrider.com/#jimmy",
+          "name": "Jimmy Caltrider",
+          "jobTitle": "Drummer & Drum Teacher",
+          "url": "https://www.jimmycaltrider.com/",
+          "alumniOf": { "@type": "CollegeOrUniversity", "name": "Keene State College" },
+          "knowsAbout": ["Drum lessons", "Percussion performance", "Music education"]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.jimmycaltrider.com/#faqs",
+          "mainEntity": [
+            { "@type": "Question", "name": "What levels do you teach?", "acceptedAnswer": { "@type": "Answer", "text": "All levels are welcome — from complete beginners to intermediate and advanced drummers looking to level up their technique or musicality." } },
+            { "@type": "Question", "name": "What styles do you specialize in?", "acceptedAnswer": { "@type": "Answer", "text": "I teach a range of styles including rock, jazz, funk, hip-hop, blues, pop, and more. Lessons are customized based on your musical taste and goals." } },
+            { "@type": "Question", "name": "Where do lessons happen?", "acceptedAnswer": { "@type": "Answer", "text": "I offer private lessons wherever is more convenient. I'll come to you to teach in the comfort of your own home, or you can visit my small studio in Brooklyn at 630 Flushing Ave where you get to play on a real drum set." } },
+            { "@type": "Question", "name": "Do I need a drum set to start?", "acceptedAnswer": { "@type": "Answer", "text": "No, but it helps and is more fun! As a beginner, we can work on fundamentals with just a pair of sticks and a drum pad. As you progress, an electric drum set is a great neighbor-friendly option." } },
+            { "@type": "Question", "name": "How are lessons conducted?", "acceptedAnswer": { "@type": "Answer", "text": "One-on-one lessons often start with a warm up together. Then we work on different drum patterns, beats or full songs, often using my iPad as a visual reference." } },
+            { "@type": "Question", "name": "What do you charge?", "acceptedAnswer": { "@type": "Answer", "text": "Get in touch to ask about my current rates. I offer a discounted first trial lesson for new students!" } },
+            { "@type": "Question", "name": "What's your teaching style like?", "acceptedAnswer": { "@type": "Answer", "text": "My goal is to make learning drums fun, approachable, and deeply musical. I focus on building solid fundamentals while keeping things engaging — whether that means jamming to your favorite songs or breaking down complex grooves step-by-step." } }
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
