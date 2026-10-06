@@ -578,8 +578,9 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 70%;
+  object-position: 50% 10%; /* Focuses on the head/torso instead of the feet */
 }
+
 
 .about__body {
   display: flex;
