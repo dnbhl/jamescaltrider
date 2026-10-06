@@ -68,21 +68,31 @@ export const About: React.FC = () => {
         </figure>
       </section>
 
-      {/* Résumé overlay — replaces the original's empty /resume page */}
-      <Sheet open={resumeOpen} title="Jimmy Caltrider — Resume" onClose={() => setResumeOpen(false)}>
-        <p>Drummer, bandleader and teacher based in Brooklyn, New York.</p>
-        <dl>
-          {resume.map((item) => (
-            <div key={item.term}>
-              <dt>{item.term}</dt>
-              <dd>
-                {item.detail}
-                <small>{item.note}</small>
-              </dd>
-            </div>
-          ))}
-        </dl>
+           {/* Résumé overlay — embeds the official resume PDF document */}
+      <Sheet open={resumeOpen} title="James Caltrider — Resume" onClose={() => setResumeOpen(false)}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px', marginTop: '1rem', marginBottom: '1.25rem' }}>
+          <p style={{ margin: 0, color: 'var(--sand)' }}>Drummer, bandleader and teacher based in Brooklyn, NY.</p>
+          <a
+            href="https://2352e02b-b37f-47b2-98c5-777c171779b2.usrfiles.com/ugd/2352e0_2a5056473b9c4de0a8a25b4cbbb40e65.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn"
+            style={{ padding: '8px 18px', fontSize: '0.875rem' }}
+          >
+            Open Full PDF ↗
+          </a>
+        </div>
+        <div style={{ width: '100%', height: '70vh', minHeight: '500px', borderRadius: '4px', overflow: 'hidden', border: '1px solid var(--line)' }}>
+          <iframe
+            src="https://2352e02b-b37f-47b2-98c5-777c171779b2.usrfiles.com/ugd/2352e0_2a5056473b9c4de0a8a25b4cbbb40e65.pdf#navpanes=0&toolbar=0&scrollbar=0&view=FitH"
+            title="James Caltrider Resume"
+            width="100%"
+            height="100%"
+            style={{ border: 'none', background: '#fff' }}
+          />
+        </div>
       </Sheet>
+
     </>
   );
 };
