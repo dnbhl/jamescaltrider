@@ -455,7 +455,7 @@ section {
 
 .hero__sub {
   margin-top: 1.1rem;
-  font-family: var(--font-sub);
+  font-family: var(--font-hero);
   font-weight: 400;
   font-size: clamp(1rem, 1.3vw, 1.1875rem);
   line-height: 1.25;
@@ -464,7 +464,7 @@ section {
 
 .hero__copy {
   margin-top: 1.5rem;
-  font-family: var(--font-sub);
+  font-family: var(--font-hero);
   font-weight: 400;
   font-size: 0.9375rem;
   line-height: 1.7;
