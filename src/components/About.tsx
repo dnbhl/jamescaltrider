@@ -68,14 +68,17 @@ export const About: React.FC = () => {
         </figure>
       </section>
 
-           {/* Résumé overlay — embeds the official resume PDF document */}
-            {/* Résumé overlay — embeds the official resume PDF document */}
+       
+          {/* Résumé overlay — embeds the official resume PDF document */}
       <Sheet open={resumeOpen} title="James Caltrider — Resume" onClose={() => setResumeOpen(false)}>
         <div style={{ 
           width: '100%', 
           height: '85vh', /* Fills the whole modal height */
           overflow: 'hidden',
-          background: '#fff' 
+          background: '#fff',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
         }}>
           <iframe
             src="https://2352e02b-b37f-47b2-98c5-777c171779b2.usrfiles.com/ugd/2352e0_2a5056473b9c4de0a8a25b4cbbb40e65.pdf#navpanes=0&toolbar=0&scrollbar=0&view=FitH"
@@ -86,6 +89,7 @@ export const About: React.FC = () => {
           />
         </div>
       </Sheet>
+
 
 
     </>
