@@ -407,42 +407,60 @@ section {
 /* --------------------------------------------------------------------------
    Hero
    -------------------------------------------------------------------------- */
+/* ==========================================================================
+   Hero Section (Desktop & Mobile)
+   ========================================================================== */
+
 .hero {
   position: relative;
   display: grid;
   align-items: center;
-  min-height: min(90vh, 860px);
+  min-height: min(85vh, 800px);
   overflow: hidden;
-  background: #1a0a12;
+  background: #000;
 }
 
-  .hero__media {
-    position: relative;
-    aspect-ratio: 1 / 1; /* Makes it square on mobile (zooms in & fills more space) */
-    /* Tip: Use 3 / 4 instead if you want it even taller (portrait) */
-  }
+/* Background Media (Desktop: Full bleed behind text) */
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
 
 .hero__media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 58% 30%;
+  object-position: 50% 30%; /* Centers the drummer nicely */
 }
 
+/* Subtle gradient to make text readable on desktop */
 .hero__scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0) 75%);
+  z-index: 2;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
   pointer-events: none;
 }
 
+/* Floating Panel on Desktop */
 .hero__panel {
   position: relative;
-  width: min(100%, 420px);
-  margin-left: clamp(0px, 12vw, 176px);
-  padding: clamp(28px, 3.6vw, 40px) clamp(22px, 2.6vw, 34px);
-  background: rgba(0, 0, 0, 0.6);
+  z-index: 3;
+  width: min(100%, 460px);
+  margin-left: clamp(0px, 8vw, 120px);
+  padding: clamp(32px, 4vw, 48px);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px); /* Modern frosted glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
 }
+
 
 .hero__title {
   font-family: var(--font-hero);
@@ -495,25 +513,34 @@ section {
 
 @media (max-width: 860px) {
   .hero {
-    display: block;
+    display: flex;
+    flex-direction: column;
     min-height: 0;
-    padding-bottom: 48px;
+    padding-bottom: 40px;
+    background: #0a0a0a;
   }
 
+  /* Mobile: Image at top, tall and cinematic */
   .hero__media {
     position: relative;
-    aspect-ratio: 4 / 3;
+    width: 100%;
+    aspect-ratio: 3 / 4; /* Portrait mode fills mobile screens beautifully without blank space */
+    z-index: 1;
   }
 
   .hero__scrim {
-    display: none;
+    display: none; /* Not needed on mobile since text is below */
   }
 
+  /* Mobile: Text drops below image cleanly */
   .hero__panel {
     width: auto;
-    margin: -140px var(--gutter) 0;
-    background: rgba(0, 0, 0, 0.78);
+    margin: -80px var(--gutter) 0; /* Shifts up slightly to overlap image for high-end look */
+    background: #000;
+    border: 1px solid var(--line);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
   }
+}
 
   .hero__title {
     text-align: left;
@@ -1234,12 +1261,13 @@ section {
   width: min(90%, 850px); /* Wider page proportion */
   height: 85vh;
   overflow: auto;
-  padding: 0; /* Removes padding so PDF fills the sheet cleanly */
-  background: #ffffff; /* Crisp white paper background */
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.7); /* Adds depth */
+  padding: 0; /* Keeps it edge-to-edge */
+  background: #080808; /* Dark background matches site */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.8);
   animation: rise-in 0.45s var(--ease);
 }
+
 
 .sheet h3 {
   display: none; /* Hides the duplicate modal title for this clean paper look */
