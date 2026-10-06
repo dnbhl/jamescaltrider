@@ -404,9 +404,7 @@ section {
   }
 }
 
-/* --------------------------------------------------------------------------
-   Hero
-   -------------------------------------------------------------------------- */
+
 /* ==========================================================================
    Hero Section (Desktop & Mobile)
    ========================================================================== */
@@ -447,16 +445,23 @@ section {
   );
   pointer-events: none;
 }
+/* Floating Panel on Desktop */
 .hero__panel {
   position: relative;
   z-index: 3;
   width: min(100%, 420px);
   margin-left: clamp(0px, 12vw, 176px);
   padding: clamp(28px, 3.6vw, 40px) clamp(22px, 2.6vw, 34px);
+  
+  /* Translucency & Glass Effect */
   background: rgba(0, 0, 0, 0.35); /* Lower number = more see-through/glassy */
+  backdrop-filter: blur(8px); /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 4px;
 }
+
 
 
 
