@@ -409,6 +409,10 @@ section {
    Hero Section (Desktop & Mobile)
    ========================================================================== */
 
+/* --------------------------------------------------------------------------
+   Hero Section
+   -------------------------------------------------------------------------- */
+
 .hero {
   position: relative;
   display: grid;
@@ -418,7 +422,7 @@ section {
   background: #000;
 }
 
-/* Background Media (Desktop: Full bleed behind text) */
+/* Desktop: Image fills background */
 .hero__media {
   position: absolute;
   inset: 0;
@@ -429,64 +433,48 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 30%; /* Centers the drummer nicely */
+  object-position: 50% 30%; /* Focus on drummer */
 }
 
-/* Subtle gradient to make text readable on desktop */
+/* Subtle gradient for text readability */
 .hero__scrim {
   position: absolute;
   inset: 0;
   z-index: 2;
   background: linear-gradient(
     90deg,
-    rgba(0, 0, 0, 0.75) 0%,
-    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0.2) 50%,
     rgba(0, 0, 0, 0) 100%
   );
   pointer-events: none;
 }
-/* Floating Panel on Desktop */
+
+/* Desktop: Floating Translucent Glass Panel */
 .hero__panel {
   position: relative;
   z-index: 3;
-  width: min(100%, 420px);
-  margin-left: clamp(0px, 12vw, 176px);
-  padding: clamp(28px, 3.6vw, 40px) clamp(22px, 2.6vw, 34px);
+  width: min(100%, 450px);
+  margin-left: clamp(0px, 10vw, 160px);
+  padding: clamp(32px, 3.6vw, 44px);
   
-  /* Translucency & Glass Effect */
-  background: rgba(0, 0, 0, 0.35); /* Lower number = more see-through/glassy */
-  backdrop-filter: blur(8px); /* Frosted glass effect */
-  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  /* Glassmorphism */
+  background: rgba(0, 0, 0, 0.35); 
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 4px;
 }
 
-
-
-
-/* Floating Panel on Desktop */
-.hero__panel {
-  position: relative;
-  z-index: 3;
-  width: min(100%, 460px);
-  margin-left: clamp(0px, 8vw, 120px);
-  padding: clamp(32px, 4vw, 48px);
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(8px); /* Modern frosted glass effect */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-}
-
-
 .hero__title {
   font-family: var(--font-hero);
-  font-variation-settings: 'wdth' 100;
   font-weight: 600;
   font-size: clamp(1.5rem, 2.1vw, 1.875rem);
   line-height: 1.3;
   letter-spacing: -0.005em;
-  text-align: center;
+  text-align: Left;
+
 }
 
 .hero__sub {
@@ -507,7 +495,6 @@ section {
   color: var(--cream);
 }
 
-
 .hero__cta {
   display: flex;
   flex-wrap: wrap;
@@ -515,7 +502,6 @@ section {
   margin-top: 1.75rem;
 }
 
-/* Original: a wide, quiet pill spanning most of the panel */
 .hero__cta .btn {
   width: 100%;
   max-width: 300px;
@@ -527,6 +513,10 @@ section {
   color: var(--black);
   border-color: var(--white);
 }
+
+/* --------------------------------------------------------------------------
+   Hero Responsive (Mobile Overrides)
+   -------------------------------------------------------------------------- */
 
 @media (max-width: 860px) {
   .hero {
@@ -541,23 +531,24 @@ section {
   .hero__media {
     position: relative;
     width: 100%;
-    aspect-ratio: 3 / 4; /* Portrait mode fills mobile screens beautifully without blank space */
+    aspect-ratio: 3 / 4; /* Fills screen perfectly */
     z-index: 1;
   }
 
   .hero__scrim {
-    display: none; /* Not needed on mobile since text is below */
+    display: none; 
   }
 
   /* Mobile: Text drops below image cleanly */
   .hero__panel {
     width: auto;
-    margin: -80px var(--gutter) 0; /* Shifts up slightly to overlap image for high-end look */
+    margin: -80px var(--gutter) 0; /* Shifts up to overlap image */
     background: #000;
     border: 1px solid var(--line);
     box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
-}
 
   .hero__title {
     text-align: left;
