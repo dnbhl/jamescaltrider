@@ -53,10 +53,10 @@ export const ServiceArea: React.FC = () => (
     {/* Full-bleed photo band, as in the original */}
     <div className="band" role="img" aria-label={bandImageAlt}>
       <img
-        src="/images/drumkit-purple-stage-band.jpg"
+        src="/images/drumkit-purple-stage.jpg"
         alt=""
-        width={1200}
-        height={500}
+        width={2000}
+        height={1124}
         loading="lazy"
         decoding="async"
       />
