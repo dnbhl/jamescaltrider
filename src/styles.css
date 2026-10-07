@@ -944,10 +944,11 @@ section {
 /* --------------------------------------------------------------------------
    Full-bleed photo band
    -------------------------------------------------------------------------- */
+/* Uses the full-resolution photo and sizes the band to a wide frame, so it
+   shows the whole stage instead of a zoomed-in crop of the drummer. */
 .band {
-  height: 65vh; /* Much taller and cinematic */
-  min-height: 420px;
-  max-height: 750px;
+  aspect-ratio: 2.2 / 1;
+  max-height: 80vh;
   overflow: hidden;
 }
 
@@ -955,7 +956,17 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 20%; /* Centers the drums perfectly */
+  object-position: 50% 15%; /* Keeps the kit and drummer, trims the crowd */
+}
+
+@media (max-width: 860px) {
+  .band {
+    aspect-ratio: 4 / 3;
+  }
+
+  .band img {
+    object-position: 28% 20%; /* Keeps the drummer in frame on phones */
+  }
 }
 
 
