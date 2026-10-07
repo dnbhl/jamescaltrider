@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { contact, site } from '../content';
 
 type FormValues = {
@@ -19,11 +19,17 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const PHONE_RE = /^[+\d()\-.\s]{7,20}$/;
 
 /**
- * Optional form backend (Formspree, Netlify Forms, Basin, etc.).
- * Set VITE_FORM_ENDPOINT in .env to post over HTTPS; without it the form
- * composes an email in the visitor's mail app so nothing is ever lost.
+ * Form backend: FormSubmit (https://formsubmit.co) emails each submission to
+ * the site owner. JavaScript submissions must use the /ajax/ endpoint, which
+ * returns JSON. VITE_FORM_ENDPOINT can override it; if no HTTPS endpoint is
+ * set, the form falls back to composing an email in the visitor's mail app.
+ *
+ * Once the address is activated, FormSubmit's activation email gives a random
+ * alias you can use here instead of the plain email address
+ * (https://formsubmit.co/ajax/<alias>), which hides it from spam scrapers.
  */
-const FORM_ENDPOINT = "https://formsubmit.co/jcaltrider6889@gmail.com";
+const FORM_ENDPOINT =
+  import.meta.env.VITE_FORM_ENDPOINT || `https://formsubmit.co/ajax/${site.email}`;
 
 
 function validate(v: FormValues): FormErrors {
@@ -41,6 +47,12 @@ export const ContactForm: React.FC = () => {
   const [values, setValues] = useState<FormValues>(EMPTY);
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'mail' | 'error'>('idle');
+  const successRef = useRef<HTMLDivElement>(null);
+
+  // Move focus to the confirmation so screen readers announce it and it's in view.
+  useEffect(() => {
+    if (status === 'sent') successRef.current?.focus();
+  }, [status]);
 
   const update = (key: keyof FormValues) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setValues((prev) => ({ ...prev, [key]: e.target.value }));
@@ -79,9 +91,18 @@ export const ContactForm: React.FC = () => {
         const res = await fetch(FORM_ENDPOINT, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify(payload),
+          body: JSON.stringify({
+            name: `${payload.firstName} ${payload.lastName}`,
+            email: payload.email, // FormSubmit sets Reply-To from this field
+            phone: payload.phone || '—',
+            message: payload.inquiry,
+            _subject: `Drum lesson inquiry — ${payload.firstName} ${payload.lastName}`,
+            _template: 'table',
+          }),
         });
-        if (!res.ok) throw new Error('Request failed');
+        const data = await res.json().catch(() => null);
+        // FormSubmit returns { success: "true" | "false", message }.
+        if (!res.ok || !data || String(data.success) !== 'true') throw new Error('Request failed');
         setStatus('sent');
         setValues(EMPTY);
       } catch {
@@ -145,6 +166,25 @@ export const ContactForm: React.FC = () => {
     );
   };
 
+  if (status === 'sent') {
+    return (
+      <div className="form-success" role="status" aria-live="polite" tabIndex={-1} ref={successRef}>
+        <svg className="form-success__icon" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true">
+          <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        <h3 className="form-success__title">Thanks — your message was sent!</h3>
+        <p className="form-success__text">
+          I’ve received your inquiry and will get back to you soon, usually within a day or two. If it’s
+          urgent, you can call or text me at <a href={site.phoneHref}>{site.phone}</a>.
+        </p>
+        <button type="button" className="btn" onClick={() => setStatus('idle')}>
+          Send another message
+        </button>
+      </div>
+    );
+  }
+
   return (
     <form className="form" onSubmit={handleSubmit} noValidate>
       <div className="form__row">
@@ -166,7 +206,6 @@ export const ContactForm: React.FC = () => {
       </button>
 
       <p className="form__status" role="status" aria-live="polite">
-        {status === 'sent' && 'Thanks! Your message is on its way — I’ll be in touch soon.'}
         {status === 'mail' && (
           <>
             Your email app should open with your message ready to send. If it didn’t, email me directly at{' '}
