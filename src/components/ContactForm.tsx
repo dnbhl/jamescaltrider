@@ -175,8 +175,7 @@ export const ContactForm: React.FC = () => {
         </svg>
         <h3 className="form-success__title">Thanks — your message was sent!</h3>
         <p className="form-success__text">
-          I’ve received your inquiry and will get back to you soon, usually within a day or two. If it’s
-          urgent, you can call or text me at <a href={site.phoneHref}>{site.phone}</a>.
+          I’ve received your inquiry and will get back to you soon, usually within a day or two.<a href={site.phoneHref}>{site.phone}</a>.
         </p>
         <button type="button" className="btn" onClick={() => setStatus('idle')}>
           Send another message
