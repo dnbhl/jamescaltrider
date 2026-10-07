@@ -23,7 +23,8 @@ const PHONE_RE = /^[+\d()\-.\s]{7,20}$/;
  * Set VITE_FORM_ENDPOINT in .env to post over HTTPS; without it the form
  * composes an email in the visitor's mail app so nothing is ever lost.
  */
-const FORM_ENDPOINT = (import.meta.env.VITE_FORM_ENDPOINT as string | undefined)?.trim();
+const FORM_ENDPOINT = "https://formsubmit.co/jcaltrider6889@gmail.com";
+
 
 function validate(v: FormValues): FormErrors {
   const errors: FormErrors = {};
